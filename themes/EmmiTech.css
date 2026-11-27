@@ -1,0 +1,145 @@
+/*
+  * unreal theme combined with the colours from the built-in dracula theme, plus some custom bits.
+  * store icons are hidden by default and only fade in when the game is hovered, so you can see the entire cover.
+  * change the overall accent colour with --themecol and --themecol-hover
+  *
+  * unreal: https://github.com/Heroic-Games-Launcher/heroic-themes/blob/main/Unreal/unreal.css
+  * built-in themes (dracula): https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/blob/main/src/frontend/themes.scss
+  */
+
+body.EmmiTech {
+  --themecol: #ccbbee;
+  --themecol-hover: #eeaaff;
+  --transition-duration: 0.15s;
+  --transition-function-in: ease-out;
+  --transition-function-out: ease-in;
+  --game-width: 128px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --accent: var(--themecol);
+  --accent-overlay: var(--themecol);
+  --navbar-accent: var(--themecol);
+  --background: #121212ff;
+  --body-background: #202020ff;
+  --overlay-background: #FFFFFF66;
+  --background-darker: var(--body-background);
+  --current-background: var(--body-background);
+  --navbar-background: #18181C;
+  --navbar-active-background: #18181C;
+  --navbar-inactive: #7c7c7c;
+  --gradient-body-background: linear-gradient(
+    90deg,
+    var(--background-darker) -32px,
+    var(--body-background) 64px,
+    var(--body-background) 100%
+  );
+  --input-background: #44475a;
+  --modal-background: var(--body-background);
+  --modal-border: var(--themecol);
+  --download-button: #44475a;
+  --download-button-overlay: #1372d7;
+  --success: #50fa7b;
+  --success-hover: #3be666;
+  --primary: var(--themecol);
+  --primary-hover: var(--themecol-hover);
+  --danger: #ff0000;
+  --text-title: var(--themecol);
+  --text-default: white;
+  --icons-background: #17131c;
+  --osk-background: var(--body-background);
+  --osk-button-background: var(--input-background);
+  --osk-button-border: var(--navbar-background);
+  --action-icon: var(--text-default);
+  --action-icon-hover: var(--text-hover);
+  --action-icon-active: var(--themecol);
+  --action-icon-hover: var(--themecol-hover);
+
+  --status-warning: #993333;
+}
+
+.libraryHeader {
+  padding: 0;
+  margin: var(--space-md-fixed);
+}
+
+.libraryToolbar {
+  margin: 0;
+}
+
+.alphabet-filter-container {
+  display: none;
+}
+
+.librarySectionHeader {
+  margin: 0;
+}
+
+.Sidebar {
+  --sidebar-width: 200px !important;
+}
+
+/* hide some sidebar elements for conciseness */
+.Sidebar .Sidebar__sectionLabel, /* labels */
+.Sidebar a[data-tour="sidebar-stores"], /* stores button */
+.Sidebar button[data-tour="sidebar-quit"], /* quit button */
+.Sidebar a[data-tour="sidebar-docs"], /* documentation link */
+.Sidebar div[data-tour="sidebar-community"], /* community links area (discord, etc) */
+.heroicVersion__title, /* version number title */
+.sidebar-tour-button /* button that starts the tour */
+{
+  display: none;
+}
+
+/* hide the store icon unless the game cover is hovered */
+.StoreBadge, .GameActionButton:not(.updateIcon) {
+  --top: auto;
+  --right: auto;
+  --bottom: 4px;
+  --left: 4px;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: var(--transition-function-out) var(--transition-duration);
+}
+
+.StoreBadge,
+.gameCard>.icons>.settingsIcon,
+.gameCard>.icons>.GameActionButton
+{
+  background: var(--overlay-background);
+  backdrop-filter: blur(5px);
+  border: 0;
+  width: 32px;
+  height: 32px;
+  transform: translateY(0);
+  transition: var(--transition-function-out) var(--transition-duration);
+}
+
+.gameCard:hover .StoreBadge,
+.gameCard:hover>.icons>.GameActionButton:not(.updateIcon)
+{
+  visibility: visible;
+  opacity: 1;
+  transition: var(--transition-function-in) var(--transition-duration);
+}
+
+.gameCard,
+.gameCard .gameImg
+{
+  transition: var(--transition-function-out) var(--transition-duration);
+}
+
+.gameCard:hover,
+.gameCard:hover .gameImg
+{
+  transform: scale(110%);
+  transition: var(--transition-function-in) var(--transition-duration);
+}
+
+.gameList {
+  grid-template-columns: repeat(auto-fill, minmax(var(--game-width), 1fr));
+}

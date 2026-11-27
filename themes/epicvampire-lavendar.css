@@ -1,0 +1,203 @@
+/*
+  * unreal theme combined with the colours from the built-in dracula theme, plus some custom bits.
+  * store icons are hidden by default and only fade in when the game is hovered, so you can see the entire cover.
+  * change the overall accent colour with --themecol and --themecol-hover
+  * 
+  * NOTE: Modifications work best with Heroic pre-3.0 - for 3.0 and above use EmmiTech
+  *
+  * unreal: https://github.com/Heroic-Games-Launcher/heroic-themes/blob/main/Unreal/unreal.css
+  * built-in themes (dracula): https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/blob/main/src/frontend/themes.scss
+  */
+
+body.epicvampire-lavendar {
+  --themecol: #ccbbee;
+  --themecol-hover: #eeaaff;
+  --transition-duration: 0.1s;
+
+  --accent: var(--themecol);
+  --accent-overlay: var(--themecol);
+  --navbar-accent: var(--themecol);
+  --background: #121212ff;
+  --body-background: #202020ff;
+  --background-darker: var(--body-background);
+  --current-background: var(--body-background);
+  --navbar-background: #18181C;
+  --navbar-active-background: #18181C;
+  --navbar-inactive: #7c7c7c;
+  --gradient-body-background: linear-gradient(
+    90deg,
+    var(--background-darker) -32px,
+    var(--body-background) 64px,
+    var(--body-background) 100%
+  );
+  --input-background: #44475a;
+  --modal-background: var(--body-background);
+  --modal-border: var(--themecol);
+  --download-button: #44475a;
+  --download-button-overlay: #1372d7;
+  --success: #50fa7b;
+  --success-hover: #3be666;
+  --primary: var(--themecol);
+  --primary-hover: var(--themecol-hover);
+  --danger: #ff0000;
+  --text-title: var(--themecol);
+  --text-default: white;
+  --icons-background: #17131c;
+  --osk-background: var(--body-background);
+  --osk-button-background: var(--input-background);
+  --osk-button-border: var(--navbar-background);
+  --action-icon: var(--text-default);
+  --action-icon-hover: var(--text-hover);
+  --action-icon-active: var(--themecol);
+  --action-icon-hover: var(--themecol-hover);
+
+  --status-warning: #993333;
+
+  .heroicVersion {
+    color: var(--text-default);
+  }
+}
+
+::-webkit-scrollbar {
+  /*  width: 0px; */
+}
+
+.Sidebar::-webkit-scrollbar {
+  width: 5px;
+  background-color: var(--navbar-background);
+}
+
+.Sidebar {
+  border-right: 3px solid #202020;
+}
+
+[data-testid="MinimizeIcon"] {
+  position: relative;
+  top: -0.25em;
+}
+
+.Sidebar__item {
+  transition: all var(--transition-duration) ease;
+  _padding: 0.75em 2em;
+}
+.Sidebar__item:hover {
+  _padding-inline-start: unset;
+  _padding: 0.75em 2em;
+  color: var(--accent);
+}
+.collapsed .Sidebar__item:hover {
+  _padding-inline-start: unset;
+  _padding: var(--space-xs) 0;
+  color: var(--accent);
+}
+.Sidebar__item:hover svg {
+  transition: all var(--transition-duration) ease;
+  transform: scale(1.5);
+}
+
+.Sidebar__itemIcon svg {
+  transform: scale(1.2);
+}
+.Sidebar__itemIcon {
+  margin-inline-end: 20px
+}
+
+.SidebarSubmenu {
+  margin: 0.25em 0.75em;
+}
+.collapsed .SidebarSubmenu {
+  margin: 0em;
+  border-radius: 1rem;
+  background-color: #202024 !important;
+}
+
+.button, .game-actions, .settings-icon, .numberOfgames, .sideloadGameButton, .SearchBar, .selectFieldWrapper select, .selectFieldWrapper .MuiInputBase-root, .selectStyle, .textInputFieldWrapper input[type=text], .textInputFieldWrapper input[type=password] {
+  border-radius: 1rem;
+  box-shadow: 0 4px 4px #00000040;
+}
+
+.numberOfgames {
+  border-radius: 0.5rem;
+}
+
+.FormControl button {
+  background: var(--input-background);
+  border-radius: 1rem;
+  padding: 0 1rem;
+  box-shadow: 0 4px 4px #00000040;
+}
+
+/* hide some elements for conciseness. only some work */
+/* a[data-tour="sidebar-stores"], /* built-in stores */
+/* a[data-tour="sidebar-docs"], /* documentation link */
+div[data-tour="sidebar-community"] /* discord, etc links */
+/* button[data-tour="sidebar-quit"] /* quit button */
+{
+  display: none;
+}
+
+/*
+  * .selectFieldWrapper select, .selectStyle {
+  *   border-radius: 2em;
+  *   grid-area: select;
+  *   width: 100%;
+  *   height: 40px;
+  *
+  *   font-family: var(--primary-font-family),"Noto Color Emoji";
+  *   font-weight: 400;
+  *   font-size: var(--text-md);
+  *   line-height: 19px;
+  *   color: var(--text-secondary);
+  *   text-indent: 22px;
+  *   border: none;
+  *   box-shadow: 0 4px 4px #00000040;
+  *   cursor: pointer;
+  *   background-image: linear-gradient(45deg,transparent 50%,var(--text-secondary) 50%),linear-gradient(135deg,var(--text-secondary) 50%,transparent 50%),linear-gradient(to right,#ccc,#ccc);
+  *   background-position: calc(100% - 20px) calc(50% + 1px),calc(100% - 15px) calc(50% + 1px),calc(100% - 40px) 50%;
+  *   background-size: 5px 5px,5px 5px,1px 70%;
+  *   background-repeat: no-repeat;
+  *   margin: 0;
+  *   -webkit-box-sizing: border-box;
+  *   -moz-box-sizing: border-box;
+  *   box-sizing: border-box;
+  *   -webkit-appearance: none;
+  *   -moz-appearance: none;
+  *   min-width: 100px;
+} *
+* */
+
+/* hide the store icon unless the game cover is hovered */
+.gameCard .store-icon {
+  --top: auto;
+  --right: auto;
+  --bottom: 4px;
+  --left: 4px;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 200ms, opacity 200ms;
+}
+
+.gameCard:hover .store-icon {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 200ms;
+}
+
+/* hide the buttons when game cover isn't hovered *
+  * .gameCard .icons .svg-button {
+  *  --scale: 1 0;
+  *
+  *  visibility: hidden;
+  *  opacity: 0;
+  *  transition: visibility 0s linear 200ms, opacity 200ms;
+}
+
+.gameCard:hover .icons .svg-button {
+--scale: 1 1;
+
+visibility: visible;
+opacity: 1;
+transition: visibility 0s linear 0s, opacity 200ms;
+}
+/* */
